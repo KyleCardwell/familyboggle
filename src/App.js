@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import { dice4by4, dice5by5 } from './components/diceData';
 import React from 'react';
 import GameBoard from './components/GameBoard';
+import { Container, Grid } from '@material-ui/core'
 
 
 const diceScramble = (array) => {
@@ -46,11 +46,11 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <GameBoard diceList={this.state.diceList}/>
-          
-        </header>
+        <Grid
+          className="App-header gameBoardBox"
+          >
+          <GameBoard diceList={this.state.diceList}/>          
+        </Grid>
       </div>
     );
 }
