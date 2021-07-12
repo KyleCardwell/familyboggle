@@ -39,11 +39,17 @@
 
 
 .gameBoard {
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.gameBoardBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gameDice {

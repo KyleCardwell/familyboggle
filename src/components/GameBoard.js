@@ -7,7 +7,7 @@ class GameBoard extends React.Component {
             <div className="gameBoard">
                 {this.props.diceList.map(letter => {
                     return (
-                        <Dice key={(Math.floor(Math.random()*100))*(Math.floor(Math.random()*100))} letter={letter}/>
+                        <Dice key={(Math.floor(Math.random()*100))*(Math.floor(Math.random()*100))-(Math.floor(Math.random()*10))} letter={letter}/>
                     )
                 })}
             </div>
