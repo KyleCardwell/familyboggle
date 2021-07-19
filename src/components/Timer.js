@@ -66,14 +66,16 @@ export class Timer extends Component {
                 <h3>{this.state.seconds}</h3>
                 {/* <h3>{this.props.remaining}</h3> */}
                 
-                <div>
+                <div className="board-buttons">
 
                     <Button
+                        variant="contained"
                         onClick={this.countDown}
                         color="secondary"
                     >Start</Button>
 
                     <Button
+                        variant="contained"
                         onClick={this.resetTime}
                         color="secondary"
                     >Reset</Button>

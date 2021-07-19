@@ -71,9 +71,17 @@
   width: 25%;
 }
 
+.board-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 300px;
+}
+
 .timer {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   font-size: xx-large;
+  min-width: 300px;
 }
