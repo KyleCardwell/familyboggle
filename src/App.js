@@ -103,11 +103,17 @@ class App extends React.Component {
             boardSizeName={this.state.boardSizeName}
           />
           
-          <div>
+          <div className="board-buttons">
             <Button
+              variant="contained"
               onClick={this.boardSizeChange}
               color="secondary"
             >Make {this.state.boardSize === dice4by4 ? "5 x 5": "4 x 4"}</Button>
+            <Button
+              variant="contained"
+              onClick={this.scrambleDice}
+              color="secondary"
+            >Scramble</Button>
  
           </div>
 
