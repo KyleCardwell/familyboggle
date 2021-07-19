@@ -2,12 +2,28 @@ import React from 'react';
 import Dice from './Dice';
 
 class GameBoard extends React.Component {
+
+    constructor( props ) {
+        super( props );
+    
+        this.keyCount = 0;
+        this.getKey = this.getKey.bind(this);
+    }
+    
+    getKey(){
+        return this.keyCount++;
+    }
+
     render() {
         return (
             <div className="gameBoard">
                 {this.props.diceList.map(letter => {
                     return (
-                        <Dice key={(Math.floor(Math.random()*100))*(Math.floor(Math.random()*100))-(Math.floor(Math.random()*10))} letter={letter}/>
+                        <Dice 
+                            key={this.getKey()}
+                            letter={letter}
+                            boardSizeName={this.props.boardSizeName}
+                            />
                     )
                 })}
             </div>
@@ -16,3 +32,4 @@ class GameBoard extends React.Component {
 }
 
 export default GameBoard;
+
