@@ -10,6 +10,7 @@ export class Timer extends Component {
     state = {
         seconds: this.props.remaining,
         timeIsUp: this.props.timeIsUp,
+        isCounting: this.props.isCounting,
     }
 
     componentDidMount() {
@@ -19,40 +20,54 @@ export class Timer extends Component {
 
     componentDidUpdate() {
 
-        if(this.state.timeIsUp===false) {
+        if(this.state.isCounting===true) {
             this.countDown();
         }
     }
 
     countDown = () => {
-        if (this.state.seconds > 0) {
+        
+        if(this.state.seconds > 0) {
 
-            setTimeout(() => {
-                const timeLeft = this.state.seconds
-                const timeMinus = timeLeft - 1;
+            if (this.state.isCounting === true) {
+    
+                setTimeout(() => {
+                    const timeLeft = this.state.seconds
+                    const timeMinus = timeLeft - 1;
+                    this.setState({
+                        ...this.state,
+                        seconds: timeMinus,
+                    })
+    
+                }, 1000)
+    
+            } else {
+    
                 this.setState({
+    
                     ...this.state,
-                    seconds: timeMinus,
-                    timeIsUp: false,
-                })
+                    timeIsUp: true,
+                    isCounting: false,
+                }) 
+            }
 
-            }, 1000)
-
-        } else {
-
-            this.setState({
-
-                ...this.state,
-                timeIsUp: true,
-            }) 
         }
+        
+    }
+    
+    startCount = () => {
+        this.setState({
+            ...this.state,
+            isCounting: true,
+        })
     }
 
     resetTime = () => {
         this.setState({
             ...this.state, 
             seconds: this.props.remaining,
-            timeIsUp: true,
+            timeIsUp: false,
+            isCounting: false,
         })
     }
 
@@ -70,7 +85,7 @@ export class Timer extends Component {
 
                     <Button
                         variant="contained"
-                        onClick={this.countDown}
+                        onClick={this.startCount}
                         color="secondary"
                     >Start</Button>
 
