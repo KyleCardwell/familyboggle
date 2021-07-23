@@ -24,9 +24,10 @@ class App extends React.Component {
 
     diceList: [],
     remaining: initialTime,
-    timeIsUp: true,
+    timeIsUp: false,
     boardSize: dice5by5,
-    boardSizeName: "5 x 5"
+    boardSizeName: "5 x 5",
+    isCounting: false,
 
   }
 
@@ -79,9 +80,19 @@ class App extends React.Component {
     diceScramble(diceLetters)
 
     this.setState({
-      diceList: diceLetters
+      diceList: diceLetters,
     })
+
   }
+
+  resetTime = () => {
+    this.setState({
+        ...this.state, 
+        seconds: this.state.remaining,
+        timeIsUp: false,
+        isCounting: false,
+    })
+}
 
   render() {
 
@@ -96,6 +107,7 @@ class App extends React.Component {
           <Timer 
             remaining={this.state.remaining}
             timeIsUp={this.state.timeIsUp}
+            isCounting={this.state.isCounting}
           />
         
           <GameBoard
